@@ -1,6 +1,6 @@
 from asyncio import gather
 from notion_client import AsyncClient
-from utils import get_env
+from src.utils import get_env
 
 
 API_KEY: str = get_env("NOTION_API_TOKEN")
