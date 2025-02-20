@@ -1,4 +1,4 @@
-name: Notion Clear Job
+name: Getting Things Done Clear Job
 
 on:
   schedule:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Code Checkout
         uses: actions/checkout@v4
 
       - name: Configurar Python
@@ -18,11 +18,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Instalar dependências
+      - name: Install requirements
         run: pip install -r requirements.txt
 
-      - name: Rodar a limpeza no Notion
+      - name: Run Notion clear
         env:
           NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        run: python -c "import asyncio; from main import clear; asyncio.run(clear())"
+        run: python -c "import asyncio; from src.main import clear; asyncio.run(clear())"
